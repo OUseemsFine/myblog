@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        {%block title%}
+        <title>
+            Jundong's Web
+        </title>
+        {%endblock%}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/layout.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}" />
+        <style>
+            select{
+                width: 100%; /* 让 select 元素铺满 aside */
+            }
+        </style>
+    </head>
+    <body id="body">
+        <header>
+            Jundong's Web  
+        </header>
+        <nav>
+           <div class="item"><a href="{%url 'index'%}" class="nav-link">Home</a></div>
+           <!-- <div class="item"><a href="" class="nav-link" onclick="alert('being developing')">Study</a></div> -->
+           <div class="item"><a href="{% url 'blogs' %}" class="nav-link" >Blog</a></div>
+           <!-- <div class="item"><a href="" class="nav-link" onclick="alert('being developing')">Recommendation</a></div> -->
+        </nav>
+        <main>
+            <div class="content" id="content">
+               {%block content%}{%endblock%}
+            </div>
+            <aside id="sidebar">
+            
+            <h4 style="text-align: center;">settings</h4>
+            <label for="backgroundSelect">background:</label>
+            <select id="backgroundSelect">
+                <option value="url('{% static 'images/bg_eldenRing.jpg' %}')">elden ring 1</option>
+                <option value="url('{% static 'images/bg_dark.jpg' %}')">elden ring 2</option>
+                <option value="url('{% static 'images/bg_dark.png' %}')">forest 1</option>
+                <option value="url('{% static 'images/bg_forest.jpg' %}')">forest 2</option>
+                <option value="url('{% static 'images/bg_blue.png' %}')">blue</option>
+            </select>
+
+            <label for="fontSelect">font type:</label><select id="fontSelect">
+                <option value="Arial">Arial</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Impact">Impact</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Lucida Console">Lucida Console</option>
+                <option value="Trebuchet MS">Trebuchet MS</option>
+                <option value="Palatino Linotype">Palatino Linotype</option>
+                <option value="Garamond">Garamond</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Arial Black">Arial Black</option>
+                <option value="Futura">Futura</option>
+                <option value="Bookman">Bookman</option>
+                <option value="Baskerville">Baskerville</option>
+                <option value="Frank Ruhl Libre">Frank Ruhl Libre</option>
+            </select>
+
+            <label for="fontSizeSelect">font size:</label>
+            <select id="fontSizeSelect">
+                <option value="0.5em">0.5em</option>
+                <option value="0.6em">0.6em</option>
+                <option value="0.7em">0.7em</option>
+                <option value="0.8em">0.8em</option>
+                <option value="0.9em">0.9em</option>
+                <option value="1em">1em</option>
+                <option value="1.1em">1.1em</option>
+                <option value="1.2em">1.2em</option>
+            </select>
+
+
+            {%block sidebar%}
+            {%endblock%}
+            </aside>
+        </main>
+        <footer>
+         email: chen1966273343@163.com
+        
+        </footer>
+        <script>
+            // 字体样式管理
+            const fontSelect = document.getElementById('fontSelect');
+            const body = document.getElementById('body');
+    
+            const savedFont = localStorage.getItem('fontStyle');
+            if (savedFont) {
+                body.style.fontFamily = savedFont;
+                fontSelect.value = savedFont;
+            }
+    
+            fontSelect.addEventListener('change', function() {
+                const selectedFont = this.value;
+                body.style.fontFamily = selectedFont;
+                localStorage.setItem('fontStyle', selectedFont); // 保存到 localStorage
+            });
+
+            // 字体大小管理
+            const fontSizeSelect = document.getElementById('fontSizeSelect');
+    
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                body.style.fontSize = savedFontSize;
+                fontSizeSelect.value = savedFontSize;
+            }
+    
+            fontSizeSelect.addEventListener('change', function() {
+                const selectedFontSize = this.value;
+                body.style.fontSize = selectedFontSize;
+                localStorage.setItem('fontSize', selectedFontSize); // 保存到 localStorage
+            });
+
+                    // 背景图片管理
+        const backgroundSelect = document.getElementById('backgroundSelect');
+
+const savedBackground = localStorage.getItem('backgroundImage');
+if (savedBackground) {
+    body.style.backgroundImage = savedBackground;
+    backgroundSelect.value = savedBackground;
+}
+
+backgroundSelect.addEventListener('change', function() {
+    const selectedBackground = this.value;
+    body.style.backgroundImage = selectedBackground;
+    localStorage.setItem('backgroundImage', selectedBackground); // 保存到 localStorage
+});
+            
+        </script>
+
+        
+    </body>
+    <script src="{% static 'scripts/blog.js' %}"></script>
+
+</html>
