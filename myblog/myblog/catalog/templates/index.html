@@ -1,0 +1,24 @@
+{%extends "base_generic.html"%}
+{%block content%}
+<h1>Home Page</h1>
+<p>
+  Welcome to Jundong's simple blog website!
+</p>
+{%if news_list%}
+<h2>Quick News:</h2>
+{%for news in news_list%}
+<ul>
+    <li><div 
+    style="
+    font-size: 0.8em;
+    "> {{news.update_date}}:</div><div 
+    style="
+    font-size: 0.7em;
+    ">{{news.content}}</div></li>
+</ul>
+{%endfor%}
+{%else%}
+<p>News: none</p>
+{%endif%}
+{%endblock%}
+

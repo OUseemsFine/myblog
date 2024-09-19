@@ -1,0 +1,43 @@
+
+article ul li{
+   color: aliceblue;
+}
+
+.blog-link{
+    color: greenyellow;
+    text-decoration: none; /* 去掉下划线 */
+}
+
+.blog-link:hover{
+    color: white;
+}
+
+article em{
+    font-size: 0.6em;
+    color: aliceblue;
+}
+
+article .blog_content{
+    font-size: 0.9em;
+    color:whitesmoke;
+    overflow-y: scroll;
+}
+
+article h1{
+    text-align: center; /* 中心对齐文本 */
+    color:rgb(69, 229, 229);
+}
+
+article p{
+    text-align: center; /* 中心对齐文本 */
+}
+
+article .blog_abstract{
+    font-size: 0.7em;
+    color: beige;
+}
+
+.align-left{
+    text-align: left !important;
+}
+
