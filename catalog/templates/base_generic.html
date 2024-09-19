@@ -117,9 +117,9 @@
             });
 
                     // 背景图片管理
+        body.style.backgroundImage = "url('{% static 'images/bg_eldenRing.jpg' %}')";
         const backgroundSelect = document.getElementById('backgroundSelect');
 
-        body.style.backgroundImage = "url('{%static 'images/bg_eldenRing.jpg'%}')"
 const savedBackground = localStorage.getItem('backgroundImage');
 if (savedBackground) {
     body.style.backgroundImage = savedBackground;

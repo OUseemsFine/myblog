@@ -1,0 +1,54 @@
+{%extends "base_generic.html"%}
+{%block content%}
+<article id="blogs">
+    <h2>Blog List:</h2>
+    <em>(blog number: {{blog_list.count}})</em>
+    {%if blog_list%}
+    <ul id="blogList" style="list-style-type: none; ">
+      {%for blog in blog_list%}
+      <li name='{{blog.get_genre}}'>
+        <a href="{{blog.get_absolute_url}}" class="blog-link">{{blog.title}}</a>({{blog.get_genre}})<em>  {{blog.create_date}}</em>
+      </li>
+      {%endfor%}
+    </ul>
+    {%else%}
+      <p>There are no blogs presently in the database.</p>
+      {%endif%}
+</article>
+{%endblock%}
+
+{%block sidebar%}
+<p style="text-align: center;">blog filter</p>
+<label for="blogSelect">genre:</label>
+<select id="blogSelect" onchange="filterBlogs(this.value)">
+    <option value="all">All</option>
+    <option value="Diary">Diary</option>
+    <option value="Summary">Summary</option>
+    <option value="Plan">Plan</option>
+    <option value="Review">Review</option>
+</select>
+<script>
+  function filterBlogs(selectElement) {
+    console.log(selectElement);
+      // Get all <li> elements under the <ul> with id="myList"
+        const listItems = document.querySelectorAll('#blogList li');
+        listItems.forEach(function(item) {
+    item.style.display = 'block';
+      });
+    if(selectElement==='all'){
+      return;
+    }
+  
+  
+  // Filter out the <li> elements with a specific id (e.g., "item2")
+  const filteredItems = Array.from(listItems).filter(item => item.getAttribute('name') !== selectElement);
+  filteredItems.forEach(function(item) {
+    item.style.display = 'none';
+          console.log(item.getAttribute('name')); // For demonstration, log item text
+          // You can perform other actions, like changing styles or visibility
+      });
+  }
+  </script>
+{%endblock%}
+
+

@@ -1,5 +1,7 @@
 
 body {
+
+    
     background-size: cover; /* 背景图片覆盖整个页面 */
     background-position: center; /* 背景图片居中 */
     background-repeat: no-repeat; /* 防止背景图片重复 */
@@ -84,7 +86,7 @@ aside {
     text-align: left; /* 居中对齐 */
     color: white;
     font-size: 1.4em;
-    overflow-y: scroll;
+
 
 }
 
